@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%=title%></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+         <% include ../partial/head %>
+            <script type="text/javascript">
+        $(document).ready(function()
+        {
+            
+            /**For displaying value selected in DropDown**************/
+            var id=$("#txtlds").val();          
+            $("#ddlType").val(id);
+            var id1=$("#txtDes").val();
+            $("#ddType").val(id1);
+            
+            var id2=$("#txtSt").val();
+            $("#txtstat").val(id2);
+            
+             $("#disply").css( "display","none");
+                    $("#txtRfr").css( "display","none");
+                     $('#ddlType').change(function() 
+                                          {
+                    if($(this).val() === 'Reference')
+                        {
+                            $("#disply").css("display","block"); 
+                              $("#txtRfr").css( "display","block");
+                        }
+                     else
+                        {
+                            $("#disply").css( "display","none");   
+                              $("#txtRfr").css( "display","none");
+                        }
+                        
+        });
+        });
+              </script>
+	</head>
+    <body>
+	<div id="wrapper">
+         <% include ../partial/header %>
+           <% include ../partial/MainMenu %>
+        
+<section id="container">
+<span class="cap">Edit Lead</span>
+    <hr class="hrStyle"/>
+    <form id="frmEdit" action="/Lead/EditLead" method="post">
+        <input type="hidden" id="txtCrton" name="txtCrton" value="<%=data[0].CreatedOn%>">
+         <input type="hidden" id="txtCrtby" name="txtCrtby" value="<%=data[0].CreatedBy%>">    
+        <input type="hidden" id="txtWeb" name="txtWeb" value="<%=data[0].Website%>">
+         <input type="hidden" id="txtComnt" name="txtComnt" value="<%=data[0].Comments%>">
+        <input type="hidden" id="txtlds" name="txtlds" value="<%=data[0].LeadSource%>">
+        <input type="hidden" id="txtDes" name="txtDes" value="<%=data[0].Designation%>">
+        <input type="hidden" id="txtSt" name="txtSt" value="<%=data[0].Status%>">
+      
+        <table class="table" style="width:80%;margin-left:80px;">
+            
+                
+      
+        
+    <tr>
+		<th style="text-align:right">Lead Source</th>
+		 <td  style="text-align:left"><select id="ddlType" name="ddlType">
+						<option value="">Select</option>						
+						<option value="Conference" >Conference</option>
+						<option value="DirectMail">Direct-Mail</option>
+                        <option value="Existing-Customer">Existing-Customer</option>
+                        <option value="Reference">Reference</option>
+                        <option value="Self Generate">Self Generate</option>
+                        <option value="Word of Mouth">Word of Mouth</option>
+                        <option value="Others">Others</option>
+         </select><span class="red">*</span></td>
+        
+        
+        <th style="text-align:right">Account Name</th>
+        <td  style="text-align:left"><input type="text" id="txtAcnt" name="txtAcnt" value="<%=data[0].AccountName%>"/><span class="red">*</span></td>
+				<div class="table-cell lo" id="msgAcnt"  class="red"></div>
+    </tr>
+    <tr>
+        <th id="disply" style="text-align:right">Refered By:</th>
+       <td id="disply" style="text-align:left"><input type="text" id="txtRfr" name="txtRfr" value="<%=data[0].ReferedBy%>"/><span class="red">*</span></td>
+			<div class="table-cell lo" id="msgName"  class="red"></div>
+         <tr>
+
+    </tr>
+    
+     <tr>
+         <th style="text-align:right">Contract Person</th>
+        <td  style="text-align:left"><input type="text" id="txtCon" name="txtCon" value="<%=data[0].contractPerson%>"/><span class="red">*</span></td>
+				<div class="table-cell lo" id="msgCon"  class="red"></div>
+        
+     
+      <th style="text-align:right">Address:</th>
+        <td  style="text-align:left">
+		<textarea id="txtAddress" name="txtAddress" cols="16" rows="2"><%=data[0].Address%></textarea><span class="red">*</span>
+		</td>
+     </tr>
+
+    <tr>
+    <th style="text-align:right">Phone:</th>
+        <td  style="text-align:left">
+		<input type="text" id="txtPhone" name="txtPhone" maxlength="10" value="<%=data[0].Phone%>"><span class="red">*</span>
+		</td>
+        
+        
+         <th style="text-align:right">Email</th>
+        <td  style="text-align:left"><input type="text" id="txtEmail" name="txtEmail" value="<%=data[0].Email%>"/><span class="red">*</span></td>
+				<div class="table-cell lo" id="msgEmail"  class="red"></div>
+    </tr>
+    
+ <tr>
+        
+        <th style="text-align:right">Designation</th>
+		 <td  style="text-align:left"><select id="ddType" name="ddType">
+						<option value="">Select</option>						
+						<option value="Admin" >Admin </option>
+						<option value="Manager">Manager</option>
+                        <option value="Executive">Executive</option>
+                        <option value="Senior">Senior Executive</option>
+					</select><span class="red">*</span></td>
+        
+   
+       <th style="text-align:right">Work Ph:</th>
+        <td  style="text-align:left">
+		<input type="text" id="txtWork" name="txtWork" maxlength="10" value="<%=data[0].WorkPhone%>"><span class="red">*</span>
+		</td>
+    </tr>
+    
+    <tr>
+    
+       <th style="text-align:right">Mobile No:</th>
+        <td  style="text-align:left">
+		<input type="text" id="txtMobile" name="txtMobile" maxlength="10" value="<%=data[0].Mobile%>"><span class="red">*</span>
+		</td>
+         
+    <th style="text-align:right">Lead Description</th>
+       <td  style="text-align:left">
+		<textarea id="txtLeadDes" name="txtLeadDes" cols="16" rows="2"><%=data[0].LeadDesc%></textarea><span class="red">*</span>
+		</td>
+        
+    <tr>
+    
+        <th style="text-align:right">Website</th>
+        <td  style="text-align:left"><%=data[0].Website %></td>
+				<div class="table-cell lo" id="msgWeb"  class="red"></div>
+       
+        <th style="text-align:right">Comments</th>
+        <td  style="text-align:left"><%=data[0].Comments%></td>
+		
+    </tr>
+            <tr>
+            <th style="text-align:right">Status</th>
+		 <td  style="text-align:left"><select id="txtstat" name="txtstat">
+						<option value="">Select</option>						
+						<option value="Assigned" >Assigned</option>
+						<option value="Converted">Converted</option>
+                        <option value="Read">Read</option>
+                        <option value="New">New</option>
+                        <option value="Recycle">Recycle</option>
+					</select><span class="red">*</span></td>
+            </tr>
+	  <tr>
+	  <td colspan="2"></td>
+	  <td ><input  type="submit" name="btnSubmit" value="Save"/>
+				
+	 <input type="reset" name="btnCancel" value="Cancel"/></td>
+	  </tr>
+	  
+   
+</table>
+
+			<span class="red">* fields are mandatory</span>
+        </form></section></div>	
+
+ <% include ../partial/footer %>
+	</body>
+</html>

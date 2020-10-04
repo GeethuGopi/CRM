@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%=title%>r</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+          <% include ../partial/head %>
+	</head>
+	<body>
+	<div id="wrapper">
+         <% include ../partial/header %>
+             <% include ../partial/MainMenu %>
+<section id="container">
+<span class="cap">Create Invoice</span>
+<hr class="hrStyle">
+        <form id="frmAdd" action="/Invoice/InvoiceCreate" method="post">
+                         
+            
+<table class="table" id="tblUser" >
+
+   <tr>
+       
+    
+ 
+			<th style="text-align:right">WorkOrder ID</th>
+       <td  style="text-align:left"><input type="text" id="txtWoid" name="txtWoid" value="<%=WOID%>" readonly=readonly/><span class="red">*</span></td>
+             <div class="table-cell lo" id="msgWoid" class="red"></div>
+	</tr>
+       
+    <tr>
+			<th style="text-align:right">Invoice Date</th>
+       <td  style="text-align:left"><input type="date" id="txtInvdt" name="txtInvdt" value="<%=dat%>" /><span class="red">*</span></td>     
+        <div class="table-cell lo" id="msgWoT" class="red"></div>
+        
+       
+			<th style="text-align:right">Invoice Amount</th>
+       <td  style="text-align:left"><input type="text" id="txtInvA" name="txtInvA"/><span class="red">*</span></td>     
+        <div class="table-cell lo" id="msgInvA" class="red"></div>
+      </tr>
+    
+	  
+   
+	  <tr>
+	  <td colspan="2"></td>
+	  <td ><input  type="submit" name="btnSubmit" value="Save"/>
+				
+	 <input type="reset" name="btnCancel" value="Cancel"/></td>
+	  </tr>
+       
+   
+</table>
+</form>
+			<span class="red">* fields are mandatory</span>
+		</div>
+		
+ <% include ../partial/footer %>
+
+
+	</body>
+</html>

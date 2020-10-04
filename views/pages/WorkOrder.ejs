@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title><%=title%></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <% include ../partial/head %>
+	</head>
+	<body>
+		<div id="wrapper">
+             <% include ../partial/header %>
+             <% include ../partial/MainMenu %>
+            <!--Serach functionlaity -->
+            <form id="frmWorkorder" method="get">                 
+                  
+        <div class="form-group">
+            <div class="row">
+        <label class="control-label col-md-1" id="h" for="searchby">Status:</label>
+          <div class="col-md-2">
+            <select id="ddlType" name="ddlType" class="form-control">
+            <option value="New" selected>New</option>
+        <option value="InProgress">Inprogress</option>              
+                <option value="Completed">Completed</option>
+        </select>
+        </div>                                                        
+     
+                             
+<div class="input-group-btn" style="visibility: hidden">
+<button class="btn btn-default" type="button" id="btnWorkorder">
+<i class="glyphicon glyphicon-search"></i></button>
+</div>
+    </div>
+    </div>
+                                       
+</form> 
+
+<!--Search functionality end-->
+            <section id="container">
+	<span class="cap">Workorder</span>
+    <hr class="hrStyle">          
+  <table class="table table-striped" id="tbl">
+    <thead>
+      <tr>
+        <th>Opportunity ID</th>
+        <th>Work Order Date</th>
+        <th>Work Order Terms</th>
+        <th>Work Order Amount</th>
+        <th>Remarks</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% if(data.length)
+	{ 
+         for(var i = 0;i < data.length;i++) { %>
+        
+    <tr>
+        
+					
+                    <td><%=data[i].OpportunityID%></td>
+         <td><%=data[i].WODate.toLocaleDateString()%> </td>
+         <td><%=data[i].WOTerms%></td>
+                    <td><%=data[i].WOAmount%></td>	    
+           <td><%=data[i].Remarks%></td>
+        <td><%=data[i].Status%></td>
+                   <td> 
+                        <a  href="/WorkOrder/EditWorkorder/?id=<%=data[i].WOID%>"><span class="glyphicon glyphicon-pencil" title="Edit"></span></a>
+                       <a  href="/Invoice/InvoiceCreate/?id=<%=data[i].WOID%>"><span class="glyphicon
+glyphicon-usd" title="Invoice"></span></a>
+                    </td> 
+                    
+                     				   
+        </tr>
+        
+        <%        }
+				 }%>
+    </tbody>
+  </table>
+  </section>
+  <% include ../partial/footer %>
+
+
+        </div>
+        	</body>
+</html>

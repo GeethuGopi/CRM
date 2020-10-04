@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title><%=title%></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <% include ../partial/head %>
+	</head>
+	<body>
+		<div id="wrapper">
+             <% include ../partial/header %>
+             <% include ../partial/MainMenu %>
+             <!--Serach functionlaity -->
+            <form id="frmSalesOrder" method="get">                 
+                  
+        <div class="form-group">
+            <div class="row">
+       
+          <div class="col-md-3">
+           Service Type:  <select id="ServiceType" name="ServiceType" class="form-control">
+            <option value="cooporateTraining" selected>Corporate Training</option>
+                <option value="staff">Staff</option>
+                 <option value="solutions">Solution</option>
+        </select>
+        </div> 
+                
+        <div class="col-md-2" id="ddlAccountType">
+         Year:<select id="year" name="year" class="form-control">
+               <option value="">select</option>
+               <option value="2010">2010</option>
+               <option value="2011">2011</option>
+               <option value="2012">2012</option>
+               <option value="2013">2013</option>
+               <option value="2014">2014</option>
+               <option value="2015">2015</option>
+               <option value="2016">2016</option>
+               <option value="2017">2017</option>         
+         </select>                                              
+        </div>      
+                       
+<div class="input-group-btn" style="visibility: hidden">
+<button class="btn btn-default" type="button" id="btnLeadsearch">
+<i class="glyphicon glyphicon-search"></i></button>
+</div>
+    </div>
+    </div>
+                                       
+</form>     
+<!--Search functionality end-->
+            <section id="container">
+	<span class="cap">Sales Analysis</span>
+    <hr class="hrStyle">          
+  <table class="table table-striped" id="tbl">
+    <thead>
+      <tr>
+        <th>Account Name</th>
+        <th>Practise</th>
+        <th>Sales Stage</th>
+        <th>Closing Date</th>
+        <th>Estimated Value</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% if(data.length)
+	{ 
+         for(var i = 0;i < data.length;i++) { %>
+        
+    <tr>			
+        <td><%=data[i].AccountName%></td>
+        <td><%=data[i].Practice%></td>
+         <td><%=data[i].SalesStage%></td>
+        <td><%=data[i].EstimatedClosDate.toLocaleDateString()%></td>
+        <td><%=data[i].EstimatedValue%></td>                      		   
+    </tr>
+        
+        <%        }
+				 }%>
+    </tbody>
+  </table>
+  </section>
+  <% include ../partial/footer %>
+
+
+        </div>
+        	</body>
+</html>

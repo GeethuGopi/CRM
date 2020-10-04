@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%=title%>r</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+          <% include ../partial/head %>
+	</head>
+	<body>
+	<div id="wrapper">
+         <% include ../partial/header %>
+             <% include ../partial/MainMenu %>
+<section id="container">
+<span class="cap">Add Opportunity</span>
+    <hr class="hrStyle">
+        <form id="frmAdd" action="/Opportunity/AddOpportunity" method="post">
+                                                    
+<table class="table" id="tblUser" >   
+    <tr>
+        <th style="text-align:right">Account Name</th>
+        <td  style="text-align:left"><input type="text" id="txtAcnt" name="txtAcnt" value="<%=AccountName%>" readonly=readonly/><span class="red" >*</span></td>
+				<div class="table-cell lo" id="msgAcnt"  class="red"></div>
+        
+      <th  id="disply" style="text-align:right">Account type</th>
+       <td  id="disply"  style="text-align:left">  
+        <select id="txtActyp" name="txtActyp" required>
+         <option value="">Select</option>
+        <option value="New">New</option>
+             <option value="Existing">Existing</option>
+        </select> <span class="red">*</span></td> 
+    </tr>
+        
+    
+     <tr>
+         <th style="text-align:right">Contract Type</th>
+        <td  style="text-align:left">
+            <select id="txtCon" name="txtCon" required>
+            <option value="">Select</option>
+            <option value="costandfees">Cost and Fees</option>
+            <option value="fixedPrice">Fixed Price</option>
+            <option value="TimeandMaterial">Time and Materials</option>
+            </select>
+            <span class="red">*</span></td>
+				<div class="table-cell lo" id="msgCon"  class="red"></div>
+        
+     
+      <th style="text-align:right">Service Type:</th>
+        <td  style="text-align:left">
+            <select id="txtService" name="txtService" required>
+            <option value="">Select</option>
+            <option value="cooporateTraining">Cooporate Training</option>
+                <option value="staff">Staff</option>
+                <option value="solutions">Solution</option>
+            </select>
+            <span class="red">*</span>
+		</td>
+     </tr>
+
+    <tr>
+    <th style="text-align:right">Estimated Value:</th>
+        <td  style="text-align:left">
+		<input type="text" id="Estval" name="Estval" maxlength="10" required><span class="red">*</span>
+		</td>
+        
+        
+         <th style="text-align:right">Estimated Close Date</th>
+        <td  style="text-align:left"><input type="date" id="EstClosdt" name="EstClosdt" required/><span class="red">*</span></td>
+				<div class="table-cell lo" id="msgdt"  class="red"></div>
+    </tr>
+    
+ <tr>
+        
+        <th style="text-align:right">Estimated Duration</th>
+		 <td  style="text-align:left"><input type="text" id="EstDur" name="EstDur" required>
+         <span class="red">*</span></td>
+        
+   
+       <th style="text-align:right">Practice:</th>
+        <td  style="text-align:left">
+            <select id="txtPrac" name="txtPrac" required>
+						<option value="">Select</option>				
+						<option value="ERP" >ERP </option>
+						<option value="Java">Java</option>
+                        <option value=".Net">.Net</option>
+                        <option value="Php">Php</option>
+                        <option value="testing">Testing</option>
+                        <option value="others">Others</option>
+					</select><span class="red">*</span>
+		</td>
+    </tr>
+    
+    <tr>
+    
+       <th style="text-align:right">Sales Stage:</th>
+        <td  style="text-align:left">
+        <select id="txtMobile" name="txtMobile" required>
+              <option value="">Select</option>
+        <option value="cancelled">Cancelled</option>
+         <option value="closedlost">Closed Lost</option>
+         <option value="closedwon">Closed Won</option>
+         <option value="negotiation">Negotiation</option>
+         <option value="onhold">Onhold</option>
+            </select>
+        <span class="red">*</span>
+		</td>
+        
+             <th style="text-align:right">Des:</th>
+             <td  style="text-align:left">
+             <input type="text" id="txtDes" name="txtDes" required>
+              <span class="red">*</span></td>
+    </tr>
+         <tr>
+	  <td colspan="2"></td>
+	  <td ><input  type="submit" name="btnSubmit" value="Save"/>
+				
+	 <input type="reset" name="btnCancel" value="Cancel"/></td>
+	  </tr>
+       
+   
+</table>
+</form>
+			<span class="red">* fields are mandatory</span>
+        </section>
+        </div>
+		
+ <% include ../partial/footer %>
+
+
+	</body>
+</html>
+    
+    
+    
+         

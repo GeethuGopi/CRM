@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%=title%></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+         <% include ../partial/head %>
+         <script type="text/javascript">
+        $(document).ready(function()
+        {
+            
+            /**For displaying value selected in DropDown**************/
+            var id=$("#txtOpid").val();          
+            $("#txtCon").val(id);
+            var id1=$("#txtslStg").val();
+            $("#txtSales").val(id1);
+            var id1=$("#txtCnt").val();
+            $("#txtCon").val(id1);
+             var id2=$("#txtAcontyp").val();
+            $("#txtActyp").val(id2);
+            var id2=$("#txtSrvc").val();
+            $("#txtService").val(id2);
+            var id2=$("#txtprac").val();
+            $("#txtPrac").val(id2);
+            
+             var dt=$("#txtDate").val();           
+            dt=format(dt);            
+            $("#EstClosdt").val(dt);
+            $("#EstClosdt").attr("type","date");
+        });
+             
+              function format(date) 
+        {
+                date = new Date(date);                
+                var day = ('0' + date.getDate()).slice(-2);
+                var month = ('0' + (date.getMonth() + 1)).slice(-2);
+                var year = date.getFullYear();
+                return year + '-' + month + '-' + day;
+        }
+             
+        </script>  
+        </head>
+    <body>
+	<div id="wrapper">
+         <% include ../partial/header %>
+           <% include ../partial/MainMenu %>
+<section id="container">
+    <span class="cap">Edit Opportunity</span>
+    <hr class="hrStyle"/>
+    <form id="frmEdit" action="/Opportunity/EditOpportunity" method="post">
+     <input type="hidden" id="txtOpid" name="txtOpid" value="<%=data[0].OpportunityID%>">
+    <input type="hidden" id="txtCnt" name="txtCnt" value="<%=data[0].ContractType%>">
+         <input type="hidden" id="txtslStg" name="txtslStg" value="<%=data[0].SalesStage%>">
+         <input type="hidden" id="txtAcontyp" name="txtAcontyp" value="<%=data[0].AccountType%>">
+        <input type="hidden" id="txtSrvc" name="txtSrvc" value="<%=data[0].ServiceType%>">
+          <input type="hidden" id="txtprac" name="txtprac" value="<%=data[0].Practice%>">
+          <input type="hidden" id="txtDate" name="txtDate" value="<%=data[0].EstimatedClosDate%>">
+        
+        <input type="hidden" id="txtcrtOn" name="txtcrtOn" value="<%=data[0].CreatedOn%>">
+        
+        <input type="hidden" id="txtcrtBy" name="txtcrtBy" value="<%=data[0].CreatedBy%>">
+        
+  <table class="table" style="width:80%;margin-left:80px;">
+            
+      
+      <tr>
+      <th style="text-align:right">Account Name</th>
+        <td  style="text-align:left"><input type="text" id="txtAcnt" name="txtAcnt" value="<%=data[0].AccountName%>"/><span class="red">*</span></td>
+				<div class="table-cell lo" id="msgAcnt"  class="red"></div>
+          
+           <th  id="disply" style="text-align:right">Account type</th>
+       <td  id="disply"  style="text-align:left">  
+        <select id="txtActyp" name="txtActyp">
+         <option value="">Select</option>
+        <option value="New">New</option> 
+            <option value="Existing">Existing</option>
+        </select> <span class="red">*</span></td> 
+      </tr>
+      
+      
+     <tr>
+         <th style="text-align:right">Contract Type</th>
+        <td  style="text-align:left">
+            <select id="txtCon" name="txtCon">
+            <option value="">Select</option>
+            <option value="costandfees">Cost and Fees</option>
+            <option value="fixedPrice">Fixed Price</option>
+            <option value="TimeandMaterial">Time and Materials</option>
+            </select>
+            <span class="red">*</span></td>
+				<div class="table-cell lo" id="msgCon"  class="red"></div>
+        
+     
+      <th style="text-align:right">Service Type:</th>
+        <td  style="text-align:left">
+            <select id="txtService" name="txtService">
+            <option value="">Select</option>
+            <option value="cooporateTraining">Cooporate Training</option>
+                <option value="staff">Staff</option>
+                <option value="solutions">Solution</option>
+            </select>
+            <span class="red">*</span>
+		</td>
+     </tr>
+
+    <tr>
+    <th style="text-align:right">Estimated Value:</th>
+        <td  style="text-align:left">
+		<input type="text" id="Estval" name="Estval" value="<%=data[0].EstimatedValue%>" maxlength="10"><span class="red">*</span>
+		</td>
+        
+        
+         <th style="text-align:right">Estimated Close Date</th>
+        <td  style="text-align:left"><input type="date" id="EstClosdt" name="EstClosdt"/><span class="red">*</span></td>
+				<div class="table-cell lo" id="msgdt"  class="red"></div>
+    </tr>
+    
+ <tr>
+        
+        <th style="text-align:right">Estimated Duration</th>
+		 <td  style="text-align:left"><input type="text" id="EstDur" name="EstDur" value="<%=data[0].EstimatedDuration%>">
+         <span class="red">*</span></td>
+        
+   
+       <th style="text-align:right">Practice:</th>
+        <td  style="text-align:left">
+            <select id="txtPrac" name="txtPrac">
+						<option value="">Select</option>				
+						<option value="ERP" >ERP </option>
+						<option value="Java">Java</option>
+                        <option value=".Net">.Net</option>
+                        <option value="Php">Php</option>
+                        <option value="testing">Testing</option>
+                        <option value="others">Others</option>
+					</select><span class="red">*</span>
+		</td>
+    </tr>
+    
+    <tr>
+    
+       <th style="text-align:right">Sales Stage:</th>
+        <td  style="text-align:left">
+        <select id="txtSales" name="txtSales">
+        <option value="">Select</option>
+       <option value="cancelled">Cancelled</option>
+ <option value="closedlost">Closed Lost</option>
+ <option value="closedwon">Closed Won</option>
+ <option value="negotiation">Negotiation</option>
+ <option value="onhold">Onhold</option>
+        </select>
+        <span class="red">*</span>
+		</td>
+        
+             <th style="text-align:right">Des:</th>
+             <td  style="text-align:left">
+             <input type="text" id="txtDes" name="txtDes" value="<%=data[0].Des%>">
+              <span class="red">*</span></td>
+    </tr>
+      
+    
+       <tr>
+	  <td colspan="2"></td>
+	  <td ><input  type="submit" name="btnSubmit" value="Save"/>
+				
+	 <input type="reset" name="btnCancel" value="Cancel"/></td>
+	  </tr>
+	  
+   
+</table>
+
+			<span class="red">* fields are mandatory</span>
+        </form></section></div>	
+
+ <% include ../partial/footer %>
+	</body>
+</html>

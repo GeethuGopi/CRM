@@ -1,0 +1,21 @@
+.carousel
+{
+	background: #fff;
+	margin-top: 100px;
+}
+.carousel .item img
+{
+	margin: 0 auto; /* Align slide image horizontally center */
+}
+.bs-example
+{
+	margin: 20px;
+}
+.list-group
+{
+	margin-top:20px;
+}
+.btn-success
+{
+	border-radius:25px;
+}

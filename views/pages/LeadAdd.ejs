@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%=title%>r</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+          <% include ../partial/head %>
+        <script type="text/javascript">
+                $(document).ready(function()
+                { 
+                     $("#disply").css( "display","none");
+                    $("#txtRfr").css( "display","none");
+                     $('#ddlType').change(function() 
+                                          {
+                    if($(this).val() === 'References')
+                        {
+                            $("#disply").css("display","block"); 
+                              $("#txtRfr").css( "display","block");
+                        }
+                     else
+                        {
+                            $("#disply").css( "display","none");   
+                              $("#txtRfr").css( "display","none");
+                        }
+                        
+                    });
+                });</script>
+	</head>
+	<body>
+	<div id="wrapper">
+         <% include ../partial/header %>
+             <% include ../partial/MainMenu %>
+<section id="container">
+<span class="cap">Add Leads</span>
+    <hr class="hrStyle">
+        <form id="frmAdd" action="/lead/LeadAdd" method="post">
+                                                    
+<table class="table" id="tblUser" >
+    
+    <tr>
+		<th style="text-align:right">Lead Source</th>
+		 <td  style="text-align:left"><select id="ddlType" name="ddlType" required>
+						<option value="">Select</option>						
+						<option value="Conference" >Conference</option>
+						<option value="Direct-Mail">Direct-Mail</option>
+                        <option value="Existing-Customer">Existing-Customer</option>
+                        <option value="References">Reference</option>
+                        <option value="Self Generate">Self Generate</option>
+                        <option value="Word of mouth">Word of Mouth</option>
+                        <option value="Others">Others</option>
+         </select><span class="red">*</span></td>
+        
+        
+        <th style="text-align:right">Account Name</th>
+        <td  style="text-align:left"><input type="text" id="txtAcnt" name="txtAcnt" required/><span class="red">*</span></td>
+				<div class="table-cell lo" id="msgAcnt"  class="red"></div>
+    </tr>
+    
+    <tr>
+          
+      <th  id="disply" style="text-align:right">Reffered By:</th>
+       <td  id="disply"  style="text-align:left">
+           <input type="text" id="txtRfr" name="txtRfr" required/></td>
+		
+             
+    </tr>
+        
+    
+     <tr>
+         <th style="text-align:right">Contract Person</th>
+        <td  style="text-align:left"><input type="text" id="txtCon" name="txtCon" required/><span class="red">*</span></td>
+				<div class="table-cell lo" id="msgCon"  class="red"></div>
+        
+     
+      <th style="text-align:right">Address:</th>
+        <td  style="text-align:left">
+		<textarea id="txtAddress" name="txtAddress" cols="16" rows="2" required></textarea><span class="red">*</span>
+		</td>
+     </tr>
+
+    <tr>
+    <th style="text-align:right">Phone:</th>
+        <td  style="text-align:left">
+		<input type="text" id="txtPhone" name="txtPhone" maxlength="10" required><span class="red">*</span>
+		</td>
+        
+        
+         <th style="text-align:right">Email</th>
+        <td  style="text-align:left"><input type="text" id="txtEmail" name="txtEmail" required/><span class="red">*</span></td>
+				<div class="table-cell lo" id="msgEmail"  class="red"></div>
+    </tr>
+    
+ <tr>
+        
+        <th style="text-align:right">Designation</th>
+		 <td  style="text-align:left"><select id="ddType" name="ddType" required>
+						<option value="">Select</option>						
+						<option value="HR" >Admin </option>
+						<option value="Manager">Manager</option>
+                        <option value="Executive">Executive</option>
+                        <option value="SeniorExecutive">Senior Executive</option>
+					</select><span class="red">*</span></td>
+        
+   
+       <th style="text-align:right">Work Ph:</th>
+        <td  style="text-align:left">
+		<input type="text" id="txtWork" name="txtWork" maxlength="10" required><span class="red">*</span>
+		</td>
+    </tr>
+    
+    <tr>
+    
+       <th style="text-align:right">Mobile No:</th>
+        <td  style="text-align:left">
+		<input type="text" id="txtMobile" name="txtMobile" maxlength="10" required><span class="red">*</span>
+		</td>
+         
+    <th style="text-align:right">Lead Description</th>
+       <td  style="text-align:left">
+		<textarea id="txtDes" name="txtDes" cols="16" rows="2" required ></textarea><span class="red">*</span>
+		</td>
+        
+    <tr>
+    
+        <th style="text-align:right">Website</th>
+        <td  style="text-align:left"><input type="text" id="txtWeb" name="txtWeb" required/><span class="red">*</span></td>
+				<div class="table-cell lo" id="msgWeb"  class="red"></div>
+       
+        <th style="text-align:right">Comments</th>
+       <td  style="text-align:left">
+		<textarea id="txtComnt" name="txtComnt" cols="16" rows="2" required ></textarea><span class="red">*</span>
+		</td>
+   
+    </tr>
+        
+         <tr>
+	  <td colspan="2"></td>
+	  <td ><input  type="submit" name="btnSubmit" value="Save"/>
+				
+	 <input type="reset" name="btnCancel" value="Cancel"/></td>
+	  </tr>
+       
+   
+</table>
+</form>
+			<span class="red">* fields are mandatory</span>
+		</div>
+		
+ <% include ../partial/footer %>
+
+
+	</body>
+</html>
+    
+    
+    
+         

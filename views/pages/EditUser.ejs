@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%=title%></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+         <% include ../partial/head %>
+               
+        <script type="text/javascript">
+        $(document).ready(function()
+        {
+            
+            /**For displaying value selected in DropDown**************/
+            var id=$("#txtddlType").val();          
+            $("#ddlType").val(id);
+            
+            var id1=$("#txtddType").val();
+            $("#ddType").val(id1);
+            /*****************To format Date*********************/
+            
+            var dt=$("#txtDate").val();           
+            dt=format(dt);            
+            $("#txtDate").val(dt);
+            $("#txtDate").attr("type","date");
+            
+            
+        });
+            
+       function format(date) 
+        {
+                date = new Date(date);                
+                var day = ('0' + date.getDate()).slice(-2);
+                var month = ('0' + (date.getMonth() + 1)).slice(-2);
+                var year = date.getFullYear();
+                return year + '-' + month + '-' + day;
+        }
+        
+        </script>
+	</head>
+	<body>
+	<div id="wrapper">
+         <% include ../partial/header %>
+           <% include ../partial/MainMenu %>
+<section id="container">
+<span class="cap">Edit User</span>
+    <hr class="hrStyle"/>
+    <form id="frmEdit" action="/EditUser" method="post">
+        <input type="hidden" id="txtEmp" name="txtEmpid" value="<%=data[0].Empid%>">
+        <input type="hidden" id="txtPassword" name="txtPassword" value="<%=data[0].Password%>">
+        <input type="hidden" id="txtddlType" value="<%=data[0].UserType%>">
+        <input type="hidden" id="txtddType" value="<%=data[0].Designation%>">
+<table class="table" style="width:80%;margin-left:80px;">
+    
+   <tr>
+        <th style="text-align:right">Name</th>
+        <td  style="text-align:left"><input type="text" name="txtname" value="<%=data[0].EmpName%>"></td> 
+         <th style="text-align:right">Designation</th>
+		 <td  style="text-align:left">
+             <select id="ddType" name="ddType">	
+                        <option value="">Select</option>
+						<option value="HR">HR</option>
+						<option value="Manager">Manager</option>
+                        <option value="software engineer">Software Engineer</option>
+					</select><span class="red">*</span></td>
+        
+    </tr>
+    
+    <tr>     
+      
+        <th style="text-align:right">UserType</th>
+        <td  style="text-align:left"><select id="ddlType" name="ddlType">
+            
+						<option value="">Select</option>						
+						<option value="Admin" >Admin </option>
+						<option value="BDE">BDE</option>
+                        <option value="Manager">Manager</option>
+					</select><span class="red">*</span></td>
+  
+         <th style="text-align:right">Email</th>
+
+		<td  style="text-align:left"><input type="text" name="txtEmail" value="<%=data[0].Email%>"><span class="red">*</span></td>
+				<div class="table-cell lo" id="msgEmail"  class="red"></div>
+      
+                
+	    </tr>
+    <tr>
+        <th style="text-align:right">Mobile No:</th>
+        <td  style="text-align:left">
+		<input type="text" name="txtMobile" maxlength="10" 
+        value="<%=data[0].Phone%>"/><span class="red">*</span>
+		</td>
+    	 
+ <th style="text-align:right">DOJ:</th>
+        <td  style="text-align:left">
+		<input type="text" id="txtDate" name="txtDate" value="<%=data[0].DOJ%>" maxlength="10"><span class="red">*</span>
+		</td>
+          </tr>
+    <tr>
+        <th style="text-align:right">Status:</th>
+        <td  style="text-align:left"><select id="ddlStat" name="ddlStat">
+						
+						<option value="Available" >Available</option>
+						<option value="NA">Not Available</option>
+					</select><span class="red">*</span></td>
+</tr>		
+	  <tr>
+	  <td colspan="2"></td>
+	  <td ><input  type="submit" name="btnSubmit" value="Save"/>
+				
+	 <input type="reset" name="btnCancel" value="Cancel"/></td>
+	  </tr>
+	  
+   
+</table>
+
+			<span class="red">* fields are mandatory</span>
+        </form></section></div>	
+
+ <% include ../partial/footer %>
+	</body>
+</html>

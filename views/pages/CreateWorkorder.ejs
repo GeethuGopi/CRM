@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%=title%>r</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+          <% include ../partial/head %>
+	</head>
+	<body>
+	<div id="wrapper">
+         <% include ../partial/header %>
+             <% include ../partial/MainMenu %>
+<section id="container">
+<span class="cap">Create Workorder</span>
+<hr class="hrStyle"></hr>
+        <form id="frmAdd" action="" method="post">
+                                                    
+<table class="table" id="tblUser" >
+
+   <tr>
+        <th style="text-align:right">Opportunity ID:</th>
+       <td  style="text-align:left"><input type="text" id="txtOpp" name="txtOpp" value="<%=OpportunityID%>" readonly=readonly/><span class="red">*</span></td>
+			<div class="table-cell lo" id="msgOpp"  class="red"></div>
+    
+ 
+			<th style="text-align:right">WorkOrder Date</th>
+       <td  style="text-align:left"><input type="date" id="txtWoDt" name="txtWoDt" required/><span class="red">*</span></td>
+             <div class="table-cell lo" id="msgWoDt" class="red"></div>
+	</tr>
+       
+    <tr>
+			<th style="text-align:right">WorkOrder Terms</th>
+       <td  style="text-align:left"><input type="text" id="txtWoT" name="txtWoT" required/><span class="red">*</span></td>     
+        <div class="table-cell lo" id="msgWoT" class="red"></div>
+        
+       
+			<th style="text-align:right">WorkOrder Amount</th>
+       <td  style="text-align:left"><input type="text" id="txtWoA" name="txtWoA" required/><span class="red">*</span></td>     
+        <div class="table-cell lo" id="msgWoA" class="red"></div>
+      </tr>
+    
+	  <tr>
+ <th style="text-align:right">Remarks</th>
+        <td  style="text-align:left"><textarea id="txtRem" name="txtRem" required></textarea>  <span class="red">*</span></td>
+				<div class="table-cell lo" id="msgRem"  class="red"></div>
+     </tr>
+   
+	  <tr>
+	  <td colspan="2"></td>
+	  <td ><input  type="submit" name="btnSubmit" value="Save"/>
+				
+	 <input type="reset" name="btnCancel" value="Cancel"/></td>
+	  </tr>
+       
+   
+</table>
+</form>
+			<span class="red">* fields are mandatory</span>
+		</div>
+		
+ <% include ../partial/footer %>
+
+
+	</body>
+</html>

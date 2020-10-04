@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%=title%>r</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+          <% include ../partial/head %>
+	</head>
+	<body>
+	<div id="wrapper">
+         <% include ../partial/header %>
+             <% include ../partial/MainMenu %>
+<section id="container">
+<span class="cap">New User</span>
+<hr class="hrStyle"></hr>
+        <form id="frmAdd" action="/NewUser" method="post">
+                                                    
+<table class="table" id="tblUser" >
+
+   <tr>
+        <th style="text-align:right">Name:</th>
+       <td  style="text-align:left"><input type="text" id="txtName" name="txtName" required/><span class="red">*</span></td>
+			<div class="table-cell lo" id="msgName"  class="red"></div>
+    
+ 
+			<th style="text-align:right">Password</th>
+       <td  style="text-align:left"><input type="password" id="txtPswd" name="txtPswd" required/><span class="red">*</span></td>
+             <div class="table-cell lo" id="msgpaswd" class="red"></div>
+	</tr>
+       
+    <tr>
+		<th style="text-align:right">Designation</th>
+		 <td  style="text-align:left"><select id="ddType" name="ddType" required>
+						<option value="">Select</option>						
+						<option value="HR" >Admin </option>
+						<option value="Manager">Manager</option>
+                        <option value="Executive">Executive</option>
+                        <option value="SeniorExecutive">Senior Executive</option>
+					</select><span class="red">*</span></td>
+        
+        <th style="text-align:right">UserType:</th>
+        <td  style="text-align:left"><select id="ddlType" name="ddlType" required>
+						<option value="">Select</option>						
+						<option value="Admin" >Admin </option>
+						<option value="BDE">BDE</option>
+						<option value="Manager">Manager</option>
+					</select><span class="red">*</span></td>
+      </tr>
+	  <tr>
+
+ <th style="text-align:right">Email</th>
+        <td  style="text-align:left"><input type="text" id="txtEmail" name="txtEmail" required/><span class="red">*</span></td>
+				<div class="table-cell lo" id="msgEmail"  class="red"></div>
+         
+
+        <th style="text-align:right">Mobile No:</th>
+        <td  style="text-align:left">
+		<input type="text" id="txtMobile" name="txtMobile" maxlength="10" required><span class="red">*</span>
+		</td>
+     </tr>
+    <tr>	 
+ <th style="text-align:right">DOJ:</th>
+        <td  style="text-align:left">
+		<input type="date" id="txtDate" name="txtDate" maxlength="10" required><span class="red">*</span>
+		</td>
+        
+        <th style="text-align:right">Status:</th>
+        <td  style="text-align:left"><select id="ddlStat" name="ddlStat" required>
+						<option value="" >Select</option>
+						<option value="Available" >Available</option>
+						<option value="NotAvail">Not Available</option>
+					</select><span class="red">*</span></td>
+</tr>		
+	  <tr>
+	  <td colspan="2"></td>
+	  <td ><input  type="submit" name="btnSubmit" value="Save"/>
+				
+	 <input type="reset" name="btnCancel" value="Cancel"/></td>
+	  </tr>
+       
+   
+</table>
+</form>
+			<span class="red">* fields are mandatory</span>
+		</div>
+		
+ <% include ../partial/footer %>
+
+
+	</body>
+</html>

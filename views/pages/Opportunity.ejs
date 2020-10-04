@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title><%=title%></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <% include ../partial/head %>
+	</head>
+	<body>
+		<div id="wrapper">
+             <% include ../partial/header %>
+             <% include ../partial/MainMenu %>
+             <!--Serach functionlaity -->
+            <form id="frmAdminOpportunity" method="get">                 
+                  
+        <div class="form-group">
+            <div class="row">
+        <label class="control-label col-md-1" id="h" for="searchby">SearchBy:</label>
+          <div class="col-md-2">
+            <select id="ddlType" name="ddlType" class="form-control">
+            <option value="AccountType" selected>Account Type</option>
+        <option value="Date">Date</option>              
+                <option value="ServiceType">ServiceType</option>
+                 <option value="Stage">Stage</option>
+        </select>
+        </div>                                                        
+        <div class="col-md-2" id="ddlAccountType">
+         <select id="AccountType" name="AccountType" class="form-control">
+        <option value="">Select</option>
+         <option value="New">New</option>
+         <option value="Existing">Existing</option>
+         </select>                                              
+        </div>      
+ <div class="col-md-5" id="date">
+     
+ From: <input type="date" name="txtFrom" id="txtFrom"> 
+     To:
+         <input type="date" name="txtTo" id="txtTo">
+</div> 
+                
+<div class="col-md-3" id="ddlServiceType">
+ <select id="ServiceType" name="ServiceType" class="form-control">
+  <option value="CooporateTraining">Corporate Training</option>
+  <option value="staff">Staff</option>
+  <option value="solutions">Solutions</option>
+</select>
+</div>
+                
+<div class="col-md-2" id="ddlStage">
+<select id="Stage" name="Stage" class="form-control">
+ <option value="cancelled">Cancelled</option>
+ <option value="closedhost">Closed host</option>
+ <option value="closedone">Closedone</option>
+ <option value="negotiation">Negotiation</option>
+ <option value="onhold">Onhold</option>
+</select>
+  </div>
+                             
+<div class="input-group-btn" style="visibility: hidden">
+<button class="btn btn-default" type="button" id="btnLeadsearch">
+<i class="glyphicon glyphicon-search"></i></button>
+</div>
+    </div>
+    </div>
+                                       
+</form>     
+<!--Search functionality end-->
+            <section id="container">
+	<span class="cap">Opportunity</span>
+    <hr class="hrStyle">          
+  <table class="table table-striped" id="tbl">
+    <thead>
+      <tr>
+        <th>Account</th>
+        <th>Sales Stage</th>
+        <th>Estimated Closing Date</th>
+        <th>Service Type</th>
+        <th>Account Type</th>
+        <th>Estimated Duration</th>
+        <th>Practice</th>
+        <th>Created By</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% if(data.length)
+	{ 
+         for(var i = 0;i < data.length;i++) { %>
+        
+    <tr>
+        
+					
+        <td><%=data[i].AccountName%></td>
+        <td><%=data[i].SalesStage%></td>
+        <td><%=data[i].EstimatedClosDate.toLocaleDateString()%></td>
+        <td><%=data[i].ServiceType%></td>
+        <td><%=data[i].AccountType%></td>
+        <td><%=data[i].EstimatedDuration%></td>
+        <td><%=data[i].Practice%></td>
+        <td><%=data[i].CreatedBy%></td>
+        <td> 
+          <a  href="/Opportunity/EditOpportunity/?id=<%=data[i].OpportunityID%>">Edit</a>&nbsp;
+          <a  href="/Opportunity/OpportunityDetails/?id=<%=data[i].OpportunityID%>">Details</a>&nbsp;
+        </td>
+                    
+                     				   
+    </tr>
+        
+        <%        }
+				 }%>
+    </tbody>
+  </table>
+  </section>
+  <% include ../partial/footer %>
+
+
+        </div>
+        	</body>
+</html>

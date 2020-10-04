@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%=title%> </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+          <% include ../partial/head %>
+        <script type="text/javascript">
+                $(document).ready(function()
+                { 
+                  
+                    $('#chkpswd').change(function() {
+                     if($(this).is(":checked"))
+                        {
+                            $("#chgpswd").css( "display","block");          
+                        }
+                     else
+                        {
+                            $("#chgpswd").css( "display","none");   
+                        }
+                        
+                    });
+                    $("#btnupdateprofile").click(function()                 {
+                          var password=$("#txtnpswd").val();
+                    var confirmpd=$("#txtpswd").val();
+                         if($('#chkpswd').is(":checked"))
+                        {
+                            if(password=="")
+                                {
+                                    alert("Enter New Password");
+                                    $("#txtnpswd").focus();
+                                    return false;
+                                }
+                            else  if(confirmpd=="")
+                                {
+                              alert("Enter Confirmed Password");
+                                    $("#txtpswd").focus();
+                                    return false;
+                                }
+                         else
+                         {
+                             if (password != confirmpd)
+                                 {
+                            alert("password do not match");
+                              $("#txtpswd").focus();
+                             return false;
+                         }
+                             else
+                                 {
+                                     return true;
+                                 }
+                         }
+                         
+                    }
+                    });
+                    
+                
+            
+            var dt=$("#txtdoj").val();           
+            dt=format(dt);            
+            $("#txtdoj").val(dt);         
+            
+            
+        });
+            
+       function format(date) 
+        {
+                date = new Date(date);                
+                var day = ('0' + date.getDate()).slice(-2);
+                var month = ('0' + (date.getMonth() + 1)).slice(-2);
+                var year = date.getFullYear();
+                return year + '-' + month + '-' + day;
+        }
+        
+      
+      </script>
+  </head>
+    <body>
+	<div id="wrapper">
+     <% include ../partial/header %>
+           <% include ../partial/MainMenu %>
+            
+<section id="container">
+<span class="cap">My Profile</span>
+    <hr class="hrStyle"/>
+    <form id="frmEdit" action="/MyProfile" method="post">    
+    <input type="hidden" name="Empid" value='<%=data[0].Empid%>'>    
+        <input type="hidden" id="ddlType" name="ddlType" value="<%=data[0].UserType%>"> 
+        <input type="hidden" id="ddlStat" name="ddlStat" value="<%=data[0].Status%>"> 
+           <input type="hidden" name="txtPassword" value="<%=data[0].Password%>"> 
+<table class="table" style="width:80%;margin-left:80px;">
+    
+   <tr>
+        <th style="text-align:right">Name</th>
+        <td  style="text-align:left"> <input type="text" name="txtname" id="txtname" value="<%=data[0].EmpName %>" readonly="readonly" style="align:left"></td> 
+         <th style="text-align:right">Designation</th>
+		 <td  style="text-align:left">
+           <input type="text" id="txtdesg" name="txtdesg" value="<%=data[0].Designation%>" readonly="readonly">
+       </td>
+        
+    </tr>
+    
+    <tr>     
+      
+         
+         <th style="text-align:right">Email</th>
+
+		<td  style="text-align:left"><input type="email"id="txtemail" name="txtemail" value="<%=data[0].Email%>" placeholder="***@gmail.com" maxlength="20" required>
+                       </td>
+				
+      
+        <th style="text-align:right">Mobile No:</th>
+        <td  style="text-align:left">
+		 <input type="text"  id="txtphone" name="txtphone" value="<%=data[0].Phone%>" required placeholder="Enter Phone No:" pattern="(\d{10})$" maxlength="10">
+                   
+		</td>
+                
+	    </tr>
+   <tr>
+    	 
+ <th style="text-align:right">DOJ:</th>
+        <td  style="text-align:left">
+		 <input type="text" id="txtdoj" name="txtdoj" value="<%=data[0].DOJ%>" readonly="readonly">
+                   
+		</td>
+          </tr>    
+	 
+      
+    <tr>
+            <td></td>
+        <td>  <input type="checkbox" id="chkpswd" name="chkpswd">Change Password<br></td>
+    </tr>
+    <tr>
+    <table class="table" id="chgpswd" style="display:none"> 
+      
+<tr>        <td>
+            New Password: </td><td> <input type="password" class="form-control" id="txtnpswd" name="txtnewpswd"><span id="checkpaswd"></span>  </td>
+            </tr>
+        <tr>        <td>
+            Confirm Password: </td><td> <input type="password" class="form-control" id="txtpswd" name="txtcwpswd"><span id="checkpaswd"></span>  </td>
+            </tr>
+        </table>
+    </tr>  
+</table>
+  <div class="form-group">
+                     <div class="row">
+                    <div style="padding-left:420px">
+                    <input type="submit" class="btn btn-primary center-block" id="btnupdateprofile">          
+                    </div>
+                    </div>
+                    </div>
+			<span class="red">* fields are mandatory</span>
+        </form></section></div>	
+
+ <footer>
+		<p>Copyright @ 2006 For problems with this website,Please contact<span class="timing"><a href="#"><u>Privacy Policy</u></a></span>
+	</footer>
+	</body>
+</html>
+  

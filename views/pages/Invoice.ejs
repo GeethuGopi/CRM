@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title><%=title%></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <% include ../partial/head %>
+	</head>
+	<body>
+		<div id="wrapper">
+             <% include ../partial/header %>
+             <% include ../partial/MainMenu %>
+            <section id="container">
+	<span class="cap">Invoice</span>
+    <hr class="hrStyle">          
+  <table class="table table-striped" id="tbl">
+    <thead>
+      <tr>
+        <th>InvoiceID</th>
+        <th>Workorder ID</th>
+        <th>Invoice Date</th>
+        <th>Invoice Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% if(data.length)
+	{ 
+         for(var i = 0;i < data.length;i++) { %>
+        
+    <tr>
+        
+					
+        <td><%=data[i].InvoiceID%></td>
+        <td><%=data[i].WOID%></td>
+        <td><%=data[i].InvoiceDt.toLocaleDateString()%></td>
+        <td><%=data[i].InvoiceAmt%></td>             				   
+    </tr>
+        
+        <%        }
+				 }%>
+    </tbody>
+  </table>
+  </section>
+  <% include ../partial/footer %>
+
+
+        </div>
+        	</body>
+</html>

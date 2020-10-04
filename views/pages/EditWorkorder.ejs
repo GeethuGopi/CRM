@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%=title%></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+         <% include ../partial/head %>
+         <script type="text/javascript">
+        $(document).ready(function()
+        { 
+           
+             var dt=$("#txtdate").val();           
+            dt=format(dt);            
+            $("#txtWoDt").val(dt);
+            $("#txtWoDt").attr("type","date");
+        });
+               function format(date) 
+        {
+                date = new Date(date);                
+                var day = ('0' + date.getDate()).slice(-2);
+                var month = ('0' + (date.getMonth() + 1)).slice(-2);
+                var year = date.getFullYear();
+                return year + '-' + month + '-' + day;
+        }
+             
+             
+        
+        </script>  
+        </head>
+    <body>
+	<div id="wrapper">
+         <% include ../partial/header %>
+           <% include ../partial/MainMenu %>
+<section id="container">
+    <span class="cap">Edit Workorder</span>
+    <hr class="hrStyle"/>
+    <form id="frmEdit" action="/Workorder/EditWorkorder" method="post">
+        <input type="hidden" id="txtOpp" name="txtOpp" value="<%=data[0].OpportunityID%>" readonly=readonly/>
+     <input type="hidden" id="txtWoid" name="txtWoid" value="<%=data[0].WOID%>">
+        <input type="hidden" id="txtdate" name="txtdate" value="<%=data[0].WODate%>">
+    
+ <table class="table" id="tblWorkorder" >
+
+   <tr>
+        <th style="text-align:right">Opportunity ID:</th>
+       <td  style="text-align:left"><%=data[0].OpportunityID%><span class="red">*</span></td>
+			<div class="table-cell lo" id="msgOpp"  class="red"></div>
+    
+ 
+			<th style="text-align:right">WorkOrder Date</th>
+       <td  style="text-align:left"><input type="date" id="txtWoDt" name="txtWoDt"/><span class="red">*</span></td>
+             <div class="table-cell lo" id="msgWoDt" class="red"></div>
+	</tr>
+       
+    <tr>
+			<th style="text-align:right">WorkOrder Terms</th>
+       <td  style="text-align:left"><input type="text" id="txtWoT" name="txtWoT" value="<%=data[0].WOTerms%>"/><span class="red">*</span></td>     
+        <div class="table-cell lo" id="msgWoT" class="red"></div>
+        
+       
+			<th style="text-align:right">WorkOrder Amount</th>
+       <td  style="text-align:left"><input type="text" id="txtWoA" name="txtWoA" value="<%=data[0].WOAmount%>"/><span class="red">*</span></td>     
+        <div class="table-cell lo" id="msgWoA" class="red"></div>
+      </tr>
+    
+	  <tr>
+ <th style="text-align:right">Remarks</th>
+        <td  style="text-align:left"><textarea id="txtRem" name="txtRem"><%=data[0].Remarks%></textarea>  <span class="red">*</span></td>
+				<div class="table-cell lo" id="msgRem"  class="red"></div>
+     </tr>
+       <tr>
+	  <td colspan="2"></td>
+	  <td ><input  type="submit" name="btnSubmit" value="Save"/>
+				
+	 <input type="reset" name="btnCancel" value="Cancel"/></td>
+	  </tr>
+	  
+   
+</table>
+
+			<span class="red">* fields are mandatory</span>
+        </form></section></div>	
+
+ <% include ../partial/footer %>
+	</body>
+</html>

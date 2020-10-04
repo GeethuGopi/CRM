@@ -1,0 +1,88 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+     
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <!--Admin menu-->
+        
+<%   if(Usertype=="Admin")
+        {  %>
+         <ul class="nav navbar-nav" id="cssmenu">
+        <li><a href="/User"><span class="glyphicon glyphicon-user"></span>Users</a></li>        
+        <li><a href="/lead/AdminLeads"><span class="glyphicon glyphicon-log-in"></span>Leads</a></li>        
+        <li><a href="/Opportunity/AdminOpportunities"><span class="glyphicon glyphicon-log-in"></span>Opportunity</a></li>
+        <li><a href="/MyProfile"><span class="glyphicon glyphicon-log-in"></span> My Profile</a></li>
+          <li><a href="/"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li></ul>
+           <ul class="nav navbar-nav navbar-right">
+      
+        <li><a href="#"><b>Welcome <%=Username%></b></a></li>
+      </ul>
+         <!--Manager menu--> 
+          <%} else if(Usertype=="Manager")
+        {%>
+                <ul class="nav navbar-nav" style="margin-left:-10px; width:110%" id="cssmenu">
+                    <li><a href="/lead/ManagerLeads"><span class="glyphicon glyphicon-log-in"></span>Leads</a></li>        
+        <li><a href="/Opportunity/ManagerOpportunities"><span class="glyphicon glyphicon-log-in"></span>Opportunities</a></li>
+        <li><a href="/WorkOrder"><span class="glyphicon glyphicon-log-in"></span>Workorder</a></li>            
+        <li class="dropdown"><a href="/#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span>Reports<span class="caret"></span> <ul class="dropdown-menu">
+      <li><a href="/Opportunity/SalesAnalysis">Sales Analysis</a></li>
+      <li><a href="/lead/BDEDetails">BDE Analysis</a></li>
+    </ul></a></li>
+        <li><a href="/MyProfile"><span class="glyphicon glyphicon-log-in"></span>My Profile</a></li>
+                    <li><a href="/"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+             
+      </ul>
+        
+          <ul class="nav navbar-nav navbar-right" style="margin-top:-30px">
+       <li><font color="white"><span >Welcome <%=Username%></span></font>
+                    </li>
+       
+      </ul>
+        <!--Employee menu-->
+        <%} else {%>
+        <ul class="nav navbar-nav" id="cssmenu">
+        <li><a href="/lead"><span class="glyphicon glyphicon-log-in"></span>Leads</a></li>        
+        <li><a href="/Opportunity">Opportunities</a></li>  
+     
+        <li><a href="/MyProfile"><span class="glyphicon glyphicon-log-in"></span>My Profile</a></li>
+        <li><a href="/"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      </ul>
+          <ul class="nav navbar-nav navbar-right">
+      
+        <li><a href="#"><b>Welcome <%=Username%></b></a></li>
+      </ul>
+        <%}%>
+      
+    </div>
+  </div>
+</nav>
+
+<script type="text/javascript">
+    $(function(){
+       
+       $("#cssmenu li a").each(function(){
+      
+               if ($(this).attr("href") == window.location.pathname){
+        console.log($(this).closest('li'));          
+                       $(this).closest('li').addClass("selected");
+               }
+       });
+});
+</script>
+<style type="text/css">
+    .selected
+    {
+        background-color:#C2C3C4;
+       
+    }
+</style>
+     
+       
+   
+            

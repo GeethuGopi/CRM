@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title><%=title%></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <% include ../partial/head %>
+	</head>
+	<body>
+		<div id="wrapper">
+             <% include ../partial/header %>
+             <% include ../partial/MainMenu %>
+
+              <!--Serach functionlaity -->
+            <form id="frmManagerLead" method="get">                 
+                  
+        <div class="form-group">
+            <div class="row">
+        <label class="control-label col-md-1" id="h" for="searchby">SearchBy:</label>
+          <div class="col-md-2">
+            <select id="ddlType" name="ddlType" class="form-control">
+            <option value="AccountName">AccountName</option>
+        <option value="LeadSource" selected>LeadSource</option>              <option value="Status">Status</option>
+        </select>
+        </div>                                                        
+        <div class="col-md-2" id="accountName">
+        <input type="text" name="AccountName" id="AccountName" >
+        </div>                                                
+        <div class="col-md-2" id="ddlLeadsource">
+        <select id="LeadSource" name="LeadSource" class="form-control">
+        <option value="">Select</option>
+        <option value="ColdCall">Cold Call</option>
+        <option value="conference">conference</option>
+        <option value="Direct-Mail">Direct Mail </option>
+        <option value="ExistingCustomer">ExistingCustomer </option>
+        <option value="Reference">Reference</option>
+        <option value="SelfGenerated">Self Generated</option>
+        <option value="WordOfMouth">Word of Mouth</option>
+        <option value="Others">Others</option>
+</select>
+</div>
+ <div class="col-md-3" id="ddlStatus">
+ <select id="Status" name="Status" class="form-control">
+ <option value="Assigned">Assigned</option>
+<option value="Converted">Converted</option>
+<option value="Dead">Dead</option>
+<option value="New">New</option>
+<option value="Recycled">Recycled</option>
+</select>
+  </div>
+              
+               
+<div class="input-group-btn" style="visibility: hidden">
+<button class="btn btn-default" type="button" id="btnLeadsearch">
+<i class="glyphicon glyphicon-search"></i></button>
+</div>
+    </div>
+    </div>
+                                       
+</form>     
+<!--Search functionality end-->
+<section id="container">
+	<span class="cap">Lead Details</span>
+    <hr class="hrStyle"> 
+  <table class="table table-striped" id="tblmanagerLeads">
+    <thead>
+      <tr>
+        <th>Account</th>
+          <th>Contract</th>
+		 <th>Email</th>
+         <th>Status</th>
+		 <th>Mobile No</th>
+		 <th>Lead Source</th>
+        <th>Created On</th><th></th>
+      </tr>
+    </thead>
+    <tbody>
+        <% if(data.length)
+	{ 
+         for(var i = 0;i < data.length;i++) { %>
+        
+    <tr>
+        
+					
+                    <td><%=data[i].AccountName%></td>
+			        <td><%=data[i].contractPerson%></td>
+					<td><%=data[i].Email%></td>
+                    <td><%=data[i].Status%></td>
+        	        <td><%=data[i].Mobile%></td>
+				    <td><%=data[i].LeadSource%></td>
+                    <td><%=data[i].CreatedOn.toLocaleDateString()%></td><td>
+				   <td><a class="a-inside details" href="/lead/Details/?id=<%=data[i].AccountName%>"><span class="glyphicon glyphicon-list-alt" title="Details"></span></a></td>
+        </tr>
+        <%        }
+				 }%>
+    </tbody>
+  </table>
+  </section>
+  <% include ../partial/footer %>
+
+
+        </div>
+        	</body>
+</html>

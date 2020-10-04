@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%=title%></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+         <% include ../partial/head %>
+            </head>
+    <body>
+	<div id="wrapper">
+         <% include ../partial/header %>
+           <% include ../partial/MainMenu %>
+<section id="container">
+<span class="cap">Details</span>
+    <hr class="hrStyle"/>
+    <table class="table" style="width:80%;margin-left:80px;">
+            
+                
+      
+        
+    <tr>
+		<th style="text-align:right">Lead Source</th>
+		  <td  style="text-align:left"><%=data[0].LeadSource%></td>
+        
+        
+        <th style="text-align:right">Account Name</th>
+        <td  style="text-align:left"><%=data[0].AccountName%></td>
+				<div class="table-cell lo" id="msgAcnt"  class="red"></div>
+    </tr>
+    
+     <tr>
+         <th style="text-align:right">Contract Person</th>
+         <td  style="text-align:left"><%=data[0].contractPerson%></td>
+        
+     
+      <th style="text-align:right">Address:</th>
+        <td  style="text-align:left"><%=data[0].Address%></td>
+     </tr>
+
+    <tr>
+    <th style="text-align:right">Phone:</th>
+        <td  style="text-align:left"><%=data[0].Phone%></td>
+        
+        
+         <th style="text-align:right">Email</th>
+        <td  style="text-align:left"><%=data[0].Email%></td>
+				<div class="table-cell lo" id="msgEmail"  class="red"></div>
+    </tr>
+    
+ <tr>
+        
+        <th style="text-align:right">Designation</th>
+		 <td  style="text-align:left"><%=data[0].Designation%></td>
+        
+   
+       <th style="text-align:right">Work Ph:</th>
+        <td  style="text-align:left"><%=data[0].WorkPhone%></td>
+    </tr>
+    
+    <tr>
+    
+       <th style="text-align:right">Mobile No:</th>
+        <td  style="text-align:left"><%=data[0].Mobile%>
+		</td>
+         
+    <th style="text-align:right">Lead Description</th>
+       <td  style="text-align:left"><%=data[0].LeadDesc%>
+		</td>
+        
+    <tr>
+    
+        <th style="text-align:right">Website</th>
+        <td  style="text-align:left"><%=data[0].Website %></td>
+				<div class="table-cell lo" id="msgWeb"  class="red"></div>
+       
+        <th style="text-align:right">Comments</th>
+        <td  style="text-align:left"><%=data[0].Comments%></td>
+		
+    </tr>
+            <tr>
+            <th style="text-align:right">Status</th>
+		 <td  style="text-align:left"><%=data[0].Status%></td>
+        </tr>
+   
+</table>
+
+			<span class="red">* fields are mandatory</span>
+        </section></div>	
+
+ <% include ../partial/footer %>
+	</body>
+</html>

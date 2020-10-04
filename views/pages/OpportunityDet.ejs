@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%=title%></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+         <% include ../partial/head %>
+            </head>
+    <body>
+	<div id="wrapper">
+         <% include ../partial/header %>
+           <% include ../partial/MainMenu %>
+<section id="container">
+<span class="cap"> Opportunity Details</span>
+    <hr class="hrStyle"/>
+    <table class="table" style="width:80%;margin-left:80px;">
+            
+                
+      
+        
+    <tr>
+		<th style="text-align:right">Account Name</th>
+		  <td  style="text-align:left"><%=data[0].AccountName%></td>
+        
+        
+        <th style="text-align:right">Account Type</th>
+        <td  style="text-align:left"><%=data[0].AccountType%></td>
+				<div class="table-cell lo" id="msgAcnt"  class="red"></div>
+    </tr>
+    
+     <tr>
+         <th style="text-align:right">Contract Type</th>
+         <td  style="text-align:left"><%=data[0].ContractType%></td>
+        
+     
+      <th style="text-align:right">Service Type</th>
+        <td  style="text-align:left"><%=data[0].ServiceType%></td>
+     </tr>
+
+    <tr>
+    <th style="text-align:right">Estimated Close Date</th>
+        <td  style="text-align:left"><%=data[0].EstimatedClosDate.toLocaleDateString()%></td>
+        
+        
+         <th style="text-align:right">Estimated Duration</th>
+        <td  style="text-align:left"><%=data[0].EstimatedDuration%></td>
+				<div class="table-cell lo" id="msgEmail"  class="red"></div>
+    </tr>
+    
+ <tr>
+        
+        <th style="text-align:right">Practice</th>
+		 <td  style="text-align:left"><%=data[0].Practice%></td>
+        
+   
+       <th style="text-align:right">Sales Stage</th>
+        <td  style="text-align:left"><%=data[0].SalesStage%></td>
+    </tr>
+    
+    <tr>
+         
+    <th style="text-align:right">Description</th>
+       <td  style="text-align:left"><%=data[0].Des%>
+		</td>
+   
+</table>
+
+			<span class="red">* fields are mandatory</span>
+        </section></div>	
+
+ <% include ../partial/footer %>
+	</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title><%=title%></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <% include ../partial/head %>
+	</head>
+	<body>
+		<div id="wrapper">
+             <% include ../partial/header %>
+             <% include ../partial/MainMenu %>
+            <!--Serach functionlaity -->
+            <form id="frmUser" method="get">                 
+                  
+        <div class="form-group">
+            <div class="row">
+        <label class="control-label col-md-1" id="h" for="searchby">Status:</label>
+          <div class="col-md-2">
+            <select id="ddlTypeUser" name="ddlTypeUser" class="form-control">
+            <option value="">Select</option>
+        <option value="Available">Available</option>              
+                <option value="NA">Not Available</option>
+        </select>
+        </div>                                                        
+     
+                             
+<div class="input-group-btn" style="visibility: hidden">
+<button class="btn btn-default" type="button" id="btnWorkorder">
+<i class="glyphicon glyphicon-search"></i></button>
+</div>
+    </div>
+    </div>
+                                       
+</form> 
+
+<!--Search functionality end-->
+<section id="container">
+	<span class="cap">User Details</span>
+	 <a href="/NewUser" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-plus"></span>Add New
+        </a>
+	<hr class="hrStyle">          
+  <table class="table table-striped" id="tblUser">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>UserType</th>
+        <th>Designation</th>
+		<th>Email</th>
+		<th>Mobile No</th>
+		<th>Date of Joining</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% if(data.length)
+	{ 
+         for(var i = 0;i < data.length;i++) { %>
+        
+    <tr>
+        
+					
+                    <td><%=data[i].EmpName%></td>
+			        <td><%=data[i].UserType%></td>
+					<td><%=data[i].Designation%></td>
+					<td><%=data[i].Email%></td>
+        	        <td><%=data[i].Phone%></td>
+					<td><%=(data[i].DOJ).toLocaleDateString()%></td>
+                    <td><%=data[i].Status%></td>
+				   <td>
+                       <a class="a-inside edit" href="../EditUser/?id=<%=data[i].Empid%>"><span class="glyphicon glyphicon-pencil" title="Edit"></span></a>
+                       <a class="a-inside delete" href="../DeleteUser/?id=<%=data[i].Empid%>"><span class="glyphicon glyphicon-trash" title="Delete"></span></a>
+        </td>
+        </tr>
+        <%        }
+				 }%>
+    </tbody>
+  </table>
+  </section>
+  <% include ../partial/footer %>
+
+
+        </div>
+        	</body>
+</html>

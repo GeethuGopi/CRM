@@ -1,0 +1,159 @@
+/********main menu****/
+.jumbotron
+{
+background-color:#8C489F;
+color:#fff;
+padding-top: -10px;
+padding-bottom: 10px;
+}
+#cardDetails.table-cell {
+	display:table-cell;
+	padding:10px;
+	border:0px none;
+	
+}
+.label{
+	text-align: right;  
+	
+} 
+
+
+h1 {
+    text-align: left;
+	    margin-top: 8px;
+    margin-bottom: 10px;
+}
+}
+#cssmenu{
+ background-color: #f4511e;
+ }
+footer{
+background-color:#46211A;
+color:red;
+height:30px;
+    margin-top:115px
+}
+.timing{
+float:right;}
+a {color:red;}
+h3{
+padding-left:40px;
+color:red;
+}
+.cap
+{
+    padding:80px 0px 0px 25px;
+	color:#B52238;
+	font-size:22px;
+	font-weight:bold;
+}
+.hrStyle {
+    width: 100%;
+    height: 10px;
+    background:black;
+}
+
+.table {
+	 background-color: #FFF;
+	 }
+
+section
+{
+	
+	
+	overflow: hidden;
+
+border:1px solid #fff;
+}
+.table-cell {
+	display:table-cell;	
+	border:0px none;
+}
+.label{
+	text-align:right; 
+	color:black;
+	font-size:12px;
+	}
+.red{
+  color:red;
+ }
+
+  .data
+ {
+ color:red;
+ }
+
+.row {
+	display:table-row;
+}
+.table-footer-group{
+	display:table-footer-group;
+}
+ .lo
+  {
+  display:table-row;
+  
+ }
+ .btn-info {
+    color: #b7f2f5;
+    background-color: #2e2295;
+    border-color: #1a3aec;
+}
+.btn-lg {
+    padding: .5px .5px;
+    font-size: 17px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+	float:right;
+}
+	
+.btnAlign{
+	padding-left:10%;
+	}
+	table {
+    background-color: #F1EBCB;
+	
+	padding:0;
+}}
+	
+	.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+  
+  }
+  #tbluser> tbody > tr > td, #tbluser> tbody > tr > th
+  {
+  border-top: 1px solid white;;
+  }
+	
+	
+	
+.navbar {
+  margin-bottom: 0;
+    background-color: #46211A;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    padding-top:1px;
+       }
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+}
+.navbar li li a, .navbar .navbar-brand {
+    color: green !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #f4511e !important;
+    background-color: #fff !important;
+}
+
+
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+
+
